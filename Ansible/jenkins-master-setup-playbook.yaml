@@ -1,0 +1,38 @@
+- hosts: jenkins-master
+  become: true
+  tasks:
+    - name: add jenkins key
+      apt_key:
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+        state: present
+
+    - name: add to repository
+      apt_repository:
+      repo: "https://pkg.jenkins.io/debian-stable binary/"
+      state: present
+
+    - name: get updated cache
+      apt:
+        update_cache: yes
+
+    - name: Installing Frontconfig and OPENJDK 17 JRE
+      apt:
+        name:
+          - fontconfig
+          - openjdk-17-jre
+        state: present
+
+    - name: install jenkins
+      apt:
+        name: jenkins
+        state: present
+
+    - name: star jenkins service
+      service:
+        name: jenkins
+        state: started
+
+    - name: enable jenkins to start
+      service:
+        name: jenkins
+        enabled: yes

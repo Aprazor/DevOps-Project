@@ -1,0 +1,13 @@
+[jenkins-master]
+54.219.39.205
+
+[jenkins-master:vars]
+ansible_user=ubuntu
+ansible_private_key_file=/opt/project_f.pem
+
+[jenkins-slave]
+13.56.230.55
+
+[jenkins-slave:vars]
+ansible_user=ubuntu
+ansible_private_key_file=/opt/project_f.pem

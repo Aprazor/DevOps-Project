@@ -1,12 +1,12 @@
 [jenkins-master]
-54.219.39.205
+Jenkins-master(18.144.128.106) ansible_host=18.144.128.106
 
 [jenkins-master:vars]
 ansible_user=ubuntu
 ansible_private_key_file=/opt/project_f.pem
 
 [jenkins-slave]
-13.56.230.55
+Jenkins-slave(52.8.219.176) ansible_host=52.8.219.176
 
 [jenkins-slave:vars]
 ansible_user=ubuntu

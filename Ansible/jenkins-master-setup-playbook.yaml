@@ -1,38 +1,37 @@
+---
 - hosts: jenkins-master
-  become: true
-  tasks:
-    - name: add jenkins key
-      apt_key:
-        url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-        state: present
+  become: true 
+  tasks: 
+  - name: add jenkins key 
+    apt_key: 
+      url:  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+      state: present 
 
-    - name: add to repository
-      apt_repository:
-      repo: "https://pkg.jenkins.io/debian-stable binary/"
+  - name: add jenkins repo 
+    apt_repository: 
+      repo: 'deb https://pkg.jenkins.io/debian-stable binary/'
+      state: present 
+
+  - name: install java 11
+    apt: 
+      name: openjdk-11-jre
       state: present
 
-    - name: get updated cache
-      apt:
-        update_cache: yes
+  - name: install jenkins 
+    apt: 
+      name: jenkins 
+      state: present 
 
-    - name: Installing Frontconfig and OPENJDK 17 JRE
-      apt:
-        name:
-          - fontconfig
-          - openjdk-17-jre
-        state: present
+  - name: start jenkins service 
+    service: 
+      name: jenkins 
+      state: started 
 
-    - name: install jenkins
-      apt:
-        name: jenkins
-        state: present
-
-    - name: star jenkins service
-      service:
-        name: jenkins
-        state: started
-
-    - name: enable jenkins to start
-      service:
-        name: jenkins
-        enabled: yes
+  - name: enable jenkins to start at boot time 
+    service: 
+      name: jenkins 
+      enabled: yes 
+      
+  - name:
+    debug:
+      msg: "Jenkins is installed and running"

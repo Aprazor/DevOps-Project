@@ -1,0 +1,57 @@
+- hosts: jenkins-slave
+  become: true
+
+  tasks:
+    - name: Update ubuntu report and cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      
+    - name: Install Java JDK 11
+      apt: 
+        name: openjdk-11-jre
+        state: present 
+    
+    - name: Install Maven
+      get_url:
+        url: https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
+        dest: /opt
+        
+    - name: Extracting maven packages
+      unarchive:
+        src: /opt/apache-maven-3.9.5-bin.tar.gz
+        dest: /opt
+        remote_src: yes
+
+    - name: Installing Docker
+      apt: 
+        name: docker.io
+        state: present
+
+    - name: Download buildx
+      get_url:
+        url: https://github.com/docker/buildx/releases/download/v0.6.0/buildx-v0.6.0.linux-amd64
+        dest: /usr/local/bin/buildx
+        mode: 0755
+
+    - name: Set execution permission
+      file:
+        path: /usr/local/bin/buildx
+        mode: 0755
+        
+    - name: Start docker Service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Giving 777 permissions on /var/run/docker.sock
+      file:
+        path: /var/run/docker.sock
+        state: file 
+        mode: 0777
+
+    - name: Start docker on boot time 
+      service: 
+        name: docker 
+        enabled: yes

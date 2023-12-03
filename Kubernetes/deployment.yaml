@@ -17,7 +17,8 @@ spec:
       - name: jfrogcred
       containers:
       - name:  valaxy-rtp
-        image: devopsproject02.jfrog.io/artifactory/project-f-docker/project
+        # image: devopsproject02.jfrog.io/artifactory/project-f-docker/project:2.1.2
+        image: devopsproject02.jfrog.io/project-f-docker-local/project:2.1.2
         imagePullPolicy: Always
         ports:
         - containerPort: 8000

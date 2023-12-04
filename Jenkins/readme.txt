@@ -6,6 +6,8 @@ URL to file: https://devopsproject02.jfrog.io/artifactory/project-f-docker-local
 
 URL to Image: https://devopsproject02.jfrog.io/artifactory/project-f-docker/project:2.1.2
 
-
-
 http://18.144.128.106:8080/multibranch-webhook-trigger/invoke?token=project-token
+
+
+aws region: us-west-1
+aws eks update-kubeconfig --region us-west-1 --name Devops-project-f

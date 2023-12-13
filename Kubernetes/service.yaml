@@ -4,7 +4,7 @@ metadata:
   name:  valaxy-rtp-service
   namespace: valaxy
 spec:
-  type: NodePort
+  type: NodePort # to expose the port
   selector:
     app: valaxy-rtp
   ports:

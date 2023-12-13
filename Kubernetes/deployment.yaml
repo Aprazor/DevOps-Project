@@ -14,7 +14,7 @@ spec:
         app:  valaxy-rtp
     spec:
       imagePullSecrets:
-      - name: jfrogcred
+      - name: jfrogcred #credentials for jfrog on jenkins to pull image
       containers:
       - name:  valaxy-rtp
         # image: devopsproject02.jfrog.io/artifactory/project-f-docker/project:2.1.2

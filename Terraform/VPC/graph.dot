@@ -1,0 +1,119 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.web (expand)" [label = "aws_instance.web", shape = "box"]
+		"[root] aws_internet_gateway.terraform_igw (expand)" [label = "aws_internet_gateway.terraform_igw", shape = "box"]
+		"[root] aws_route_table.terraform_route_table (expand)" [label = "aws_route_table.terraform_route_table", shape = "box"]
+		"[root] aws_route_table_association.dpp-rta-public-subnet-02 (expand)" [label = "aws_route_table_association.dpp-rta-public-subnet-02", shape = "box"]
+		"[root] aws_route_table_association.terraform-rta-public-subnet-01 (expand)" [label = "aws_route_table_association.terraform-rta-public-subnet-01", shape = "box"]
+		"[root] aws_security_group.terraform-sg (expand)" [label = "aws_security_group.terraform-sg", shape = "box"]
+		"[root] aws_subnet.terraform_subnet-01 (expand)" [label = "aws_subnet.terraform_subnet-01", shape = "box"]
+		"[root] aws_subnet.terraform_subnet-02 (expand)" [label = "aws_subnet.terraform_subnet-02", shape = "box"]
+		"[root] aws_vpc.terraform_vpc (expand)" [label = "aws_vpc.terraform_vpc", shape = "box"]
+		"[root] data.aws_ami.amazonlinux (expand)" [label = "data.aws_ami.amazonlinux", shape = "box"]
+		"[root] data.aws_ami.ubuntu (expand)" [label = "data.aws_ami.ubuntu", shape = "box"]
+		"[root] data.aws_key_pair.terraform_key (expand)" [label = "data.aws_key_pair.terraform_key", shape = "box"]
+		"[root] module.eks.aws_eks_cluster.eks (expand)" [label = "module.eks.aws_eks_cluster.eks", shape = "box"]
+		"[root] module.eks.aws_eks_node_group.backend (expand)" [label = "module.eks.aws_eks_node_group.backend", shape = "box"]
+		"[root] module.eks.aws_iam_instance_profile.worker (expand)" [label = "module.eks.aws_iam_instance_profile.worker", shape = "box"]
+		"[root] module.eks.aws_iam_policy.autoscaler (expand)" [label = "module.eks.aws_iam_policy.autoscaler", shape = "box"]
+		"[root] module.eks.aws_iam_role.master (expand)" [label = "module.eks.aws_iam_role.master", shape = "box"]
+		"[root] module.eks.aws_iam_role.worker (expand)" [label = "module.eks.aws_iam_role.worker", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSClusterPolicy (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonEKSClusterPolicy", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSServicePolicy (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonEKSServicePolicy", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSVPCResourceController (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonEKSVPCResourceController", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonSSMManagedInstanceCore (expand)" [label = "module.eks.aws_iam_role_policy_attachment.AmazonSSMManagedInstanceCore", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.autoscaler (expand)" [label = "module.eks.aws_iam_role_policy_attachment.autoscaler", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.s3 (expand)" [label = "module.eks.aws_iam_role_policy_attachment.s3", shape = "box"]
+		"[root] module.eks.aws_iam_role_policy_attachment.x-ray (expand)" [label = "module.eks.aws_iam_role_policy_attachment.x-ray", shape = "box"]
+		"[root] module.sgs.aws_security_group.worker_node_sg (expand)" [label = "module.sgs.aws_security_group.worker_node_sg", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.sg_ingress" [label = "var.sg_ingress", shape = "note"]
+		"[root] aws_instance.web (expand)" -> "[root] aws_security_group.terraform-sg (expand)"
+		"[root] aws_instance.web (expand)" -> "[root] aws_subnet.terraform_subnet-01 (expand)"
+		"[root] aws_instance.web (expand)" -> "[root] data.aws_ami.ubuntu (expand)"
+		"[root] aws_instance.web (expand)" -> "[root] data.aws_key_pair.terraform_key (expand)"
+		"[root] aws_internet_gateway.terraform_igw (expand)" -> "[root] aws_vpc.terraform_vpc (expand)"
+		"[root] aws_route_table.terraform_route_table (expand)" -> "[root] aws_internet_gateway.terraform_igw (expand)"
+		"[root] aws_route_table_association.dpp-rta-public-subnet-02 (expand)" -> "[root] aws_route_table.terraform_route_table (expand)"
+		"[root] aws_route_table_association.dpp-rta-public-subnet-02 (expand)" -> "[root] aws_subnet.terraform_subnet-02 (expand)"
+		"[root] aws_route_table_association.terraform-rta-public-subnet-01 (expand)" -> "[root] aws_route_table.terraform_route_table (expand)"
+		"[root] aws_route_table_association.terraform-rta-public-subnet-01 (expand)" -> "[root] aws_subnet.terraform_subnet-01 (expand)"
+		"[root] aws_security_group.terraform-sg (expand)" -> "[root] aws_vpc.terraform_vpc (expand)"
+		"[root] aws_security_group.terraform-sg (expand)" -> "[root] var.sg_ingress"
+		"[root] aws_subnet.terraform_subnet-01 (expand)" -> "[root] aws_vpc.terraform_vpc (expand)"
+		"[root] aws_subnet.terraform_subnet-02 (expand)" -> "[root] aws_vpc.terraform_vpc (expand)"
+		"[root] aws_vpc.terraform_vpc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ami.amazonlinux (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ami.ubuntu (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_key_pair.terraform_key (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.eks (close)" -> "[root] module.eks.aws_eks_node_group.backend (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.aws_iam_instance_profile.worker (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonSSMManagedInstanceCore (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.autoscaler (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.s3 (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.x-ray (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.output.endpoint (expand)"
+		"[root] module.eks (close)" -> "[root] module.eks.var.vpc_id (expand)"
+		"[root] module.eks.aws_eks_cluster.eks (expand)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSClusterPolicy (expand)"
+		"[root] module.eks.aws_eks_cluster.eks (expand)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSServicePolicy (expand)"
+		"[root] module.eks.aws_eks_cluster.eks (expand)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSVPCResourceController (expand)"
+		"[root] module.eks.aws_eks_cluster.eks (expand)" -> "[root] module.eks.var.subnet_ids (expand)"
+		"[root] module.eks.aws_eks_node_group.backend (expand)" -> "[root] module.eks.aws_eks_cluster.eks (expand)"
+		"[root] module.eks.aws_eks_node_group.backend (expand)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly (expand)"
+		"[root] module.eks.aws_eks_node_group.backend (expand)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy (expand)"
+		"[root] module.eks.aws_eks_node_group.backend (expand)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy (expand)"
+		"[root] module.eks.aws_eks_node_group.backend (expand)" -> "[root] module.eks.var.sg_ids (expand)"
+		"[root] module.eks.aws_iam_instance_profile.worker (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_policy.autoscaler (expand)" -> "[root] module.eks (expand)"
+		"[root] module.eks.aws_iam_policy.autoscaler (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.eks.aws_iam_role.master (expand)" -> "[root] module.eks (expand)"
+		"[root] module.eks.aws_iam_role.master (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.eks.aws_iam_role.worker (expand)" -> "[root] module.eks (expand)"
+		"[root] module.eks.aws_iam_role.worker (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSClusterPolicy (expand)" -> "[root] module.eks.aws_iam_role.master (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSServicePolicy (expand)" -> "[root] module.eks.aws_iam_role.master (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSVPCResourceController (expand)" -> "[root] module.eks.aws_iam_role.master (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.AmazonSSMManagedInstanceCore (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.autoscaler (expand)" -> "[root] module.eks.aws_iam_policy.autoscaler (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.autoscaler (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.s3 (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.aws_iam_role_policy_attachment.x-ray (expand)" -> "[root] module.eks.aws_iam_role.worker (expand)"
+		"[root] module.eks.output.endpoint (expand)" -> "[root] module.eks.aws_eks_cluster.eks (expand)"
+		"[root] module.eks.var.sg_ids (expand)" -> "[root] module.eks (expand)"
+		"[root] module.eks.var.sg_ids (expand)" -> "[root] module.sgs.output.security_group_public (expand)"
+		"[root] module.eks.var.subnet_ids (expand)" -> "[root] aws_subnet.terraform_subnet-01 (expand)"
+		"[root] module.eks.var.subnet_ids (expand)" -> "[root] aws_subnet.terraform_subnet-02 (expand)"
+		"[root] module.eks.var.subnet_ids (expand)" -> "[root] module.eks (expand)"
+		"[root] module.eks.var.vpc_id (expand)" -> "[root] aws_vpc.terraform_vpc (expand)"
+		"[root] module.eks.var.vpc_id (expand)" -> "[root] module.eks (expand)"
+		"[root] module.sgs (close)" -> "[root] module.sgs.output.security_group_public (expand)"
+		"[root] module.sgs.aws_security_group.worker_node_sg (expand)" -> "[root] module.sgs.var.vpc_id (expand)"
+		"[root] module.sgs.output.security_group_public (expand)" -> "[root] module.sgs.aws_security_group.worker_node_sg (expand)"
+		"[root] module.sgs.var.vpc_id (expand)" -> "[root] aws_vpc.terraform_vpc (expand)"
+		"[root] module.sgs.var.vpc_id (expand)" -> "[root] module.sgs (expand)"
+		"[root] output.aws_instance_ip (expand)" -> "[root] aws_instance.web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.web (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.dpp-rta-public-subnet-02 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.terraform-rta-public-subnet-01 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] data.aws_ami.amazonlinux (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eks.aws_eks_node_group.backend (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eks.aws_iam_instance_profile.worker (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.AmazonSSMManagedInstanceCore (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.autoscaler (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.s3 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] module.eks.aws_iam_role_policy_attachment.x-ray (expand)"
+		"[root] root" -> "[root] module.eks (close)"
+		"[root] root" -> "[root] module.sgs (close)"
+		"[root] root" -> "[root] output.aws_instance_ip (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
